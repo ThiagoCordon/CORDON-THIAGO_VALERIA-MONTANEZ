@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinica Odontologica</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <div>
+                        <img src="./imagenes/logo.png" class="logo" alt="">
+                        <a class="navbar-brand" href="index.html">Clinica Odontologica</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Odontologos
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="post_odontologos.html">Registrar Odontologo</a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="funciones-odontologos.html">Listar
+                                            Odontologos</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Pacientes
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="post_pacientes.html">Registrar Paciente</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="funciones-pacientes.html">Listar Pacientes</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Turnos
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="post_turnos.html">Registrar Turno</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="funciones-turnos.html">Listar Turnos</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">Cerrar sesión</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class=" container my-5">
+        <ul class="nav nav-pills justify-content-end bg-success bg-opacity-10 p-2 rounded">
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="funciones-pacientes.html">Ver Listado</a>
+            </li>
+        </ul>
+        <div class="container">
+            <div class="bg-success bg-opacity-10 p-4 rounded mt-5">
+                <h2 class="mb-4 text-center">Registro Paciente</h2>
+                <form id="add_new_paciente">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="nombre" class="control-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre"
+                                required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="apellido" class="control-label">Apellido</label>
+                            <input type="text" class="form-control" id="apellido" placeholder="Apellido" name="apellido"
+                                required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="email" class="control-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="email" name="email"
+                                required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="dni" class="control-label">DNI</label>
+                            <input type="text" class="form-control" id="dni" placeholder="DNI" name="dni" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="fechaIngreso" class="control-label">Fecha de ingreso</label>
+                            <input type="date" class="form-control" id="fechaIngreso" name="fechaIngreso" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <h5 class="mt-2">Domicilio</h5>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="calle" class="control-label">Calle</label>
+                            <input type="text" class="form-control" id="calle" placeholder="Calle" name="calle"
+                                required>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="numero" class="control-label">Número</label>
+                            <input type="text" class="form-control" id="numero" placeholder="nro" name="numero"
+                                required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="localidad" class="control-label">Localidad</label>
+                            <input type="text" class="form-control" id="localidad" placeholder="Localidad"
+                                name="localidad" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="provincia" class="control-label">Provincia</label>
+                            <input type="text" class="form-control" id="provincia" placeholder="Provincia"
+                                name="provincia" required>
+                        </div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-secondary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; Javier Del Castillo - 2023
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/js/post_pacientes.js"></script>
+</body>
+
+</html>

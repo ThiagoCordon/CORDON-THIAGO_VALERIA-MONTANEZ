@@ -1,0 +1,26 @@
+header {
+    background-color: #44d5a6;
+}
+
+.logo {
+    width: 50px;
+}
+
+.carousel-caption {
+    color: black;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .carousel-item .d-block {
+    max-height: 100%;
+    margin: 0 auto;
+  }
+
+footer {
+    background-color: #44d5a6;
+}
