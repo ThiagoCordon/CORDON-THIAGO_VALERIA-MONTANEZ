@@ -24,7 +24,7 @@ class PacienteServiceTest {
 
     @Test
     @Order(1)
-    void deberiaPoderRegristrarUnPaciente() throws BadRequestException {
+    void deberiaRegristrarUnPaciente() throws BadRequestException {
         Domicilio domicilio = new Domicilio("Colon", 525, "Villa Maria", "Cordoba");
         Paciente pacienteAGuardar = new Paciente("Thiago", "Cordon", "3361420873", LocalDate.of(2024, 8, 11), domicilio);
         PacienteDto pacienteDto = pacienteService.guardarPaciente(pacienteAGuardar);
@@ -35,14 +35,14 @@ class PacienteServiceTest {
 
     @Test
     @Order(2)
-    void noDeberiaRegistrarPaciente_ElFormatoDniEsIncorrecto() {
-        Paciente pacienteAGuardar = new Paciente("Thiago", "Cordon", "336jbjbj0008732", LocalDate.of(2023, 8, 11), new Domicilio("Colon", 525, "Villa Maria", "Cordoba"));
+    void noDeberiaRegistrarPacienteElFormatoDniEsIncorrecto() {
+        Paciente pacienteAGuardar = new Paciente("Valeria", "Montañez", "336jbjbj0008732", LocalDate.of(2023, 5, 11), new Domicilio("Lavalleja", 546, "Pando", "Canelones"));
         Assertions.assertThrows(ConstraintViolationException.class, () -> pacienteService.guardarPaciente(pacienteAGuardar));
     }
 
     @Test
     @Order(3)
-    void deberiaEliminarElPacienteoConId1() throws ResourceNotFoundException {
+    void deberiaEliminarElPacienteConId1() throws ResourceNotFoundException {
         pacienteService.eliminarPaciente(1L);
         Assertions.assertThrows(ResourceNotFoundException.class, () -> pacienteService.eliminarPaciente(1L));
     }

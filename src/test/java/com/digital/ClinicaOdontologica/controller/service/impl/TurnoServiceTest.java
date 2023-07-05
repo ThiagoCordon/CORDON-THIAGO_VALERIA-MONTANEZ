@@ -16,6 +16,8 @@ import com.digital.ClinicaOdontologica.service.impl.TurnoService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import javax.validation.ConstraintViolationException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -51,13 +53,32 @@ class TurnoServiceTest {
         PacienteDto pacienteDto = pacienteService.guardarPaciente(paciente);
         OdontologoDto odontologoDto = odontologoService.registrarOdontologo(odontologo);
 
-        Turno turnoAInsertar = new Turno(paciente, odontologo, LocalDateTime.of(LocalDate.of(2024, 10, 3), LocalTime.of(14, 10)));
+        Turno turnoAInsertar = new Turno(paciente, odontologo, LocalDateTime.of(LocalDate.of(2023, 12, 3), LocalTime.of(9, 00)));
         TurnoDto turnoDto = turnoService.guardarTurno(turnoAInsertar);
 
         Assertions.assertNotNull(turnoDto);
         Assertions.assertNotNull(turnoDto.getId());
         Assertions.assertEquals(turnoDto.getPaciente(), pacienteDto.getNombre()+" "+ pacienteDto.getApellido());
         Assertions.assertEquals(turnoDto.getOdontologo(), odontologoDto.getNombre()+" "+ odontologoDto.getApellido());
+    }
+
+    @Test
+    @Order(2)
+    void noDeberiaInsertarUnTurnoSiOdontologoEsNull() throws BadRequestException {
+        PacienteDto pacienteDto = pacienteService.guardarPaciente(paciente);
+        OdontologoDto odontologoDto = odontologoService.registrarOdontologo(odontologo);
+
+        Turno turnoAInsertar = new Turno(paciente, null, LocalDateTime.of(LocalDate.of(2023, 12, 3), LocalTime.of(9, 00)));
+        TurnoDto turnoDto = turnoService.guardarTurno(turnoAInsertar);
+
+        Assertions.assertThrows(BadRequestException.class, () -> turnoService.guardarTurno(turnoAInsertar));
+    }
+
+    @Test
+    @Order(3)
+    void deberiaEliminarElTurnoConId1() throws ResourceNotFoundException {
+        turnoService.eliminarTurno(1L);
+        Assertions.assertThrows(ResourceNotFoundException.class, () -> turnoService.eliminarTurno(1L));
     }
 
 
